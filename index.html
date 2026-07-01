@@ -192,7 +192,7 @@
   .cert-corner{position:absolute;width:60mm;height:60mm}
   .cert-corner.tl{top:0;left:0;background:radial-gradient(circle at 0 0,var(--navy) 0,var(--navy) 35mm,transparent 36mm)}
   .cert-corner.br{bottom:0;right:0;background:radial-gradient(circle at 100% 100%,var(--red) 0,var(--red) 35mm,transparent 36mm)}
-  .cert-content{position:relative;z-index:2;padding:30mm 30mm 20mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;height:100%;text-align:center}
+  .cert-content{position:relative;z-index:2;padding:22mm 30mm 28mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;height:100%;text-align:center}
   .cert-header{display:flex;flex-direction:column;align-items:center}
   .cert-org{font-size:14pt;color:var(--navy);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4mm}
   .cert-org-sub{font-size:11pt;color:#444;margin-bottom:8mm;letter-spacing:.5px}
@@ -204,10 +204,11 @@
   .cert-event{font-weight:700;color:var(--navy)}
   .cert-footer{display:flex;justify-content:space-between;align-items:flex-end;width:100%;margin-top:6mm;font-size:11pt}
   .cert-date{text-align:left}
-  .cert-signature{text-align:center;flex:1}
-  .cert-sig-line{border-top:1px solid #333;width:80mm;margin:0 auto 2mm}
-  .cert-sig-name{font-weight:700;color:var(--navy)}
-  .cert-sig-role{color:#555;font-size:10pt;margin-top:1mm}
+  .cert-signature{text-align:center;flex:1;position:relative}
+  .cert-sig-img{display:block;margin:0 auto -6mm;height:16mm;width:auto;position:relative;z-index:2}
+  .cert-sig-line{border-top:1px solid #333;width:82mm;margin:0 auto 2mm}
+  .cert-sig-name{font-weight:700;color:var(--navy);font-size:11pt}
+  .cert-sig-role{color:#555;font-size:9.5pt;margin-top:1mm}
   .cert-code{text-align:right;font-size:9pt;color:#888;font-family:monospace}
 </style>
 </head>
@@ -434,9 +435,10 @@
         <strong>08 de julho de 2026</strong>
       </div>
       <div class="cert-signature">
+        <img class="cert-sig-img" alt="Assinatura" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAABBCAYAAAApI+rSAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAEt0lEQVR42u2d27LbMAhFTSf//8v0qZ0zbWzrAkiIxdOZNoklBEsbWZblwjCsx/S6Lvnx94xJlk4L444VT/pMJuUujGEkf55cBhQYMNg3H3SXPgEKrAIQBP/M+QJQYNlhQAyP+VVwMnYiFIjVheDA+Vh6WYyZjo0wMH4Ox4/9YBD6u20/BFAAihWJUg0KGQHyCIwPuY4ZJ4sEJVhmONxdZyU0HnebAgqsulro7bs4XmcHaMiPdvzdrk7pQekxqxpO8Y8GwGE1nIaVDooC8wpSTe6DyOR8K9eWAxdQAIcK5USPL1b3/QkakcD4WYIACsBQEg47qIgeaOhTWRDhK0CBcsAv+/tBXsoS9/YDCt9ZGjgAiSiF4dkPFjNRDkAioX0DhvX6haIoagACOKyt66OAEaIuAAVwABL5YWFdCv/nL0CRHxDAAbsMVQVbuAEEauLgfsplv8DOQ2GUF0ACa487QAEgompoLDFUAcW+gCDBUBNWk8z0dwEF6mG3oEXRzPtbrL8LKPZKJFREHKhOOCJgVok2AwZQUGKcbLzPw0iFAAoAUVlNnNIfFxUBKCgvTlcRFc7qFIPfbv4NQIGC8Oz3yiPcBDDYjQ2gABCewa4J+u/dxtUvQjKBN6CgzMieiNmUQVSMmE5agMInKKSoH+7WB6JgoRv/viwelykDFLaGgsg5DnrI+LuVvgS2XUBVPpxWHv49civ1t2tZqgxJFJumbUVRAAlLSOw0LlXeph6ygA4o1te9p/pDvqiKt7WKaF9X3r5dHhSW783UyTacrjTekv7uTMcd2gYgihB1N0Ug17n7KFYmlgy0sXUCkOTjENb+CqWHBAW/Fk1kJqxDVUQ1UPQEp5LEbv5VoJAPEICiT9Zp4QTvkbyaNPlGypcSgAAU74Oigwm2YuU+cpu0DH7mTztXb+luXWCNVkBbPwbwARJDg9K6kWin5GUt4R3kKx5RT/Gc0C8gcTswEhykGROr8mRhcd07NbsdkKuCojU4ZgbsbjFPO4JGH/5vNBAByvuahAAIQNE7g/TcHVHHBBuFhjokUou/1KlNmeNOb+CwfUn3ARKpJb++qJeZ64rBb2Q5i0KCxzDdWs+nKCCiB8tSgYx8tyX51UBNZFQLEjTWKQFRVVFEzR4ycH0JCNRdkzvqVqQ6++PYk84qgCLjq+U0ILGfgtpjHaRFVf1bqnwDSE85Y1VGjT5gdswu1F+FIBGxVmBRdrwF3tNt3Nag7Zn5LO/89Py7fvlbG8qkq+MzswDRjnFCURxUcqjzdVZtzOqBhAZcUy/fzU2epVTJg5RPBoVXydGTUJZqwuK7KyRy60z+BrPRflucn1n+dLMK+yhkk4Tx7JsaJe3I7WMdbNcM8LwOz1XH2EJRHLY2IUbKpDURWpN9VKrLBAR2GB9xUhMCJADF6sFU44CPSHSrOx0yCINW2W+honYu1QBFAjXheX1d1N6WNQLr26HqlHSSLBZYo8DSgrEVEnczt9ceD534LKdmoSjSlz2tr90bmelHDt3RTvkecUaDTn5WHcYJUB3eQevboiPJJC8J2tvOln0Hlg+GVYt7JY9qdXDlDCmdiY3tEfdAYhNZiZ0TJyPbxXuSMYMqKrke8hv33oOOQVDeSgAAAABJRU5ErkJggg==">
         <div class="cert-sig-line"></div>
-        <div class="cert-sig-name">7ª Subseção da OAB/MS</div>
-        <div class="cert-sig-role">Presidência</div>
+        <div class="cert-sig-name">Stênio Ferreira Parron</div>
+        <div class="cert-sig-role">Presidente da 7ª Subseção — OAB/MS</div>
       </div>
       <div class="cert-code">
         Reg. <span id="certCode">000000</span>
