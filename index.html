@@ -815,4 +815,24 @@ function exportCSV(){
   const csv = '﻿' + headers.join(',') + '\n' + rows.join('\n');
   const blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a')
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'inscritos-talk-direito.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+/* ---------- Init ---------- */
+if(!CONFIG.SCRIPT_URL){
+  document.getElementById('configWarning').style.display = 'block';
+}
+function routeHash(){
+  const h = location.hash;
+  if(h === '#admin')    showAdmin();
+  else if(h === '#presenca' || h === '#checkin') showPresenceView();
+  else if(h === '#qr')  showEventQrView();
+}
+routeHash();
+window.addEventListener('hashchange', routeHash);
+</script>
+</body>
+</html>
